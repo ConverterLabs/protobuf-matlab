@@ -1,1 +1,11 @@
 *.DS_Store
+pb_read_test__TestAllTypes.m
+pb_read_test__TestAllTypes__NestedMessage.m
+pb_read_test_import__ImportMessage.m
+protoc.exe
+protobuflib
+pb_descriptor_test__ForeignMessage.m
+pb_descriptor_test__TestAllTypes.m
+pb_descriptor_test__TestAllTypes__NestedMessage.m
+pb_descriptor_test_import__ImportMessage.m
+pb_read_test__ForeignMessage.m

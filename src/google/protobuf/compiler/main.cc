@@ -28,6 +28,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#include "absl/log/initialize.h"
 #include "google/protobuf/compiler/command_line_interface.h"
 #include "google/protobuf/compiler/cpp/generator.h"
 #include "google/protobuf/compiler/csharp/csharp_generator.h"
@@ -38,7 +39,6 @@
 #include "google/protobuf/compiler/python/generator.h"
 #include "google/protobuf/compiler/python/pyi_generator.h"
 #include "google/protobuf/compiler/ruby/ruby_generator.h"
-
 #include "farsounder/protobuf/compiler/matlab/matlab_generator.h"
 
 // Must be included last.
@@ -49,6 +49,7 @@ namespace protobuf {
 namespace compiler {
 
 int ProtobufMain(int argc, char* argv[]) {
+  absl::InitializeLog();
 
   CommandLineInterface cli;
   cli.AllowPlugins("protoc-");
@@ -116,7 +117,6 @@ int ProtobufMain(int argc, char* argv[]) {
   farsounder::protobuf::compiler::matlab::MatlabGenerator matlab_generator;
   cli.RegisterGenerator("--matlab_out", &matlab_generator,
                         "Generate Matlab M files.");
-
   return cli.Run(argc, argv);
 }
 

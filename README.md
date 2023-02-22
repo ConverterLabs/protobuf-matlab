@@ -26,7 +26,7 @@ git clone https://github.com/farsounder/protobuf-matlab.git
 
 3. Add the protobuf-matlab src files to the Google Protobuf src:
 ```
-cp -r protobuf-matlab/{src,cmake} protobuf
+cp -r protobuf-matlab/{src} protobuf
 ```
 
 4. Compile the modified protobuf project:
@@ -44,6 +44,12 @@ use protoc to generate Matlab reading and writing code for your .proto file(s).
 
 ```
 protoc test.proto --matlab_out=./
+protoc test_import.proto --matlab_out=./
+```
+
+Test by 
+```
+pb_run_test
 ```
 
 ## Matlab support library setup

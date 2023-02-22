@@ -409,7 +409,8 @@ void MatlabGenerator::PrintReadComment(Printer & printer,
         printer.Print("repeated ");
         break;
       default:
-        GOOGLE_LOG(FATAL)<<"Unhandled case in print comment.";
+		break;
+        //GOOGLE_LOG(FATAL)<<"Unhandled case in print comment.";
     }
     if (field.type() == FieldDescriptor::TYPE_MESSAGE) {
       printer.Print("<a href=\"matlab:help $read_function$\">$type$</a>",
@@ -569,7 +570,7 @@ string MatlabGenerator::DefaultValueToString(
         return s.str();
     }
   }
-  GOOGLE_LOG(FATAL) << "Not reached.";
+  //GOOGLE_LOG(FATAL) << "Not reached.";
   return "''";
 }
 
@@ -621,7 +622,7 @@ string MatlabGenerator::MakeReadFunctionHandle(
       // will put the result into a uint64
       return "@(x) pblib_helpers_first(typecast(x, 'int32'))";
   }
-  GOOGLE_LOG(FATAL) << "Shouldn't get here since switch should catch all cases.";
+  //GOOGLE_LOG(FATAL) << "Shouldn't get here since switch should catch all cases.";
   return "";
 }
 
@@ -649,7 +650,7 @@ string MatlabGenerator::MakeWriteFunctionHandle(const FieldDescriptor & field) c
         case FieldDescriptor::TYPE_SINT32:
           return "@(x) typecast(pblib_helpers_iff(int32(x) < 0, -2 * int32(x) - 1, 2 * int32(x)), 'uint32')";
       }
-      GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_int32 type "<<type<<" in WriteFunctionHandle.";
+      //GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_int32 type "<<type<<" in WriteFunctionHandle.";
       break;
     case MATLABTYPE_INT64:
       // We must figure out whether this is encoded using the ZigZag encoding,
@@ -664,7 +665,7 @@ string MatlabGenerator::MakeWriteFunctionHandle(const FieldDescriptor & field) c
         case FieldDescriptor::TYPE_SINT64:
           return "@(x) pblib_helpers_iff(int64(x) < 0, bitxor(bitshift(typecast(int64(x), 'uint64'), 1), intmax('uint64')), bitshift(typecast(int64(x), 'uint64'), 1))";
       }
-      GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_int32 type "<<type<<" in WriteFunctionHandle.";
+      ////GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_int32 type "<<type<<" in WriteFunctionHandle.";
       break;
     case MATLABTYPE_UINT32:
       switch(type) {
@@ -674,7 +675,7 @@ string MatlabGenerator::MakeWriteFunctionHandle(const FieldDescriptor & field) c
         case FieldDescriptor::TYPE_UINT32:
           return "@(x) typecast(uint32(x), 'uint32')";
       }
-      GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_uint32 type "<<type<<" in WriteFunctionHandle.";
+      //GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_uint32 type "<<type<<" in WriteFunctionHandle.";
       break;
     case MATLABTYPE_UINT64:
       switch(type) {
@@ -683,7 +684,7 @@ string MatlabGenerator::MakeWriteFunctionHandle(const FieldDescriptor & field) c
         case FieldDescriptor::TYPE_FIXED64:
           return "@(x) typecast(uint64(x), 'uint8')";
       }
-      GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_uint64 type "<<type<<" in WriteFunctionHandle.";
+      //GOOGLE_LOG(DFATAL)<<"Unhandled matlabtype_uint64 type "<<type<<" in WriteFunctionHandle.";
       break;
     case MATLABTYPE_DOUBLE:
       return "@(x) typecast(double(x), 'uint8')";
@@ -700,7 +701,7 @@ string MatlabGenerator::MakeWriteFunctionHandle(const FieldDescriptor & field) c
       // will put the result into a uint64
       return "@(x) typecast(int32(x), 'uint32')";
   }
-  GOOGLE_LOG(DFATAL) << "Shouldn't get here since switch should catch all cases.";
+  //GOOGLE_LOG(DFATAL) << "Shouldn't get here since switch should catch all cases.";
   return "";
 }
 
