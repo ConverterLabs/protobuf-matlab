@@ -77,10 +77,11 @@ protoc test.proto --matlab_out=./
 protoc test_import.proto --matlab_out=./
 ```
 
-Test by 
+Test by running
 ```
 pb_run_test
 ```
+in MATLAB. 
 
 ## Matlab support library setup
 
