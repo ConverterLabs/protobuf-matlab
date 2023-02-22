@@ -49,7 +49,7 @@ open msys2 shell and run
 pacman -S mingw-w64-x86_64-cmake
 pacman -S mingw-w64-x86_64-ninja
  ```
-! NOW RENAME OR DELETE THE FILE install_dir/msys64/usr/lib/librt.a e.g. to librt.bak 
+:warning: NOW RENAME OR DELETE THE FILE install_dir/msys64/usr/lib/librt.a e.g. to librt.bak 
 then run
 ```
 cd ~
