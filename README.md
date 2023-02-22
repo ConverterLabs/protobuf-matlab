@@ -29,7 +29,7 @@ git clone https://github.com/farsounder/protobuf-matlab.git
 cp -r protobuf-matlab/{src} protobuf
 ```
 
-4. Compile the modified protobuf project:
+4. Compile the modified protobuf for:
 ```
 cd protobuf/cmake
 git submodule update --init --recursive
@@ -37,6 +37,36 @@ mkdir build && cd build
 cmake ..
 make
 sudo make install
+```
+
+
+## COMPILE USING WINDOWS
+
+for Windows use MSYS2 MinGW64 shell and run:
+install mingw-w64-x86_64-cmake and mingw-w64-x86_64-ninja by
+open msys2 shell and run
+```
+pacman -S mingw-w64-x86_64-cmake
+pacman -S mingw-w64-x86_64-ninja
+ ```
+! NOW RENAME OR DELETE THE FILE install_dir/msys64/usr/lib/librt.a e.g. to librt.bak 
+then run
+```
+cd ~
+git clone https://github.com/protocolbuffers/protobuf.git
+git clone https://github.com/ConverterLabs/protobuf-matlab.git
+cd protobuf/cmake
+git submodule update --init --recursive
+```
+copy the src folder from protobuf-matlab to protobuf
+```
+cp -r ~/protobuf-matlab/src ~/protobuf
+```
+then run
+```
+mkdir build && cd build
+cmake -G Ninja ~/protobuf -DCMAKE_BUILD_TYPE=Release
+cmake --build ./
 ```
 
 This should yield a protoc executable with a --matlab_out option. You can now
